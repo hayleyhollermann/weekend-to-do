@@ -11,11 +11,9 @@
 </head>
 <body>
     <h1>To-Do</h1>
-    <div>
-        <form id="inputFields">
-            <input type="text" id="taskInput">
-            <button id="submitButton">Add a task!</button>
-        </form>
+    <div id="inputFields">
+        <input type="text" id="taskInput">
+        <button id="submitButton">Add a task!</button>
     </div>
     <div>
         <table>
@@ -24,7 +22,7 @@
                 <th>Complete?</th>
                 <th>Delete</th>
             </thead>
-            <tbody>
+            <tbody id="showTasks">
 
             </tbody>
         </table>
