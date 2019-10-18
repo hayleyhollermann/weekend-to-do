@@ -30,4 +30,30 @@ taskRouter.post('/', (req, res) => {
     });
 })
 
+taskRouter.put('/:id', (req, res) => {
+    console.log('in PUT');
+    // updating default false value to true for complete in table
+    const query = `UPDATE "tasks" SET "complete" = true
+    WHERE "id" = $1;`;
+    pool.query(query, [req.params.id]).then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error in Put query`, error);
+        res.sendStatus(500);
+    });
+})
+
+taskRouter.delete('/:id', (req, res) => {
+    console.log('in DELETE');
+    const query = `DELETE FROM "tasks"
+    WHERE "id" = $1;`;
+    pool.query(query, [req.params.id])
+        .then(() => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('Error making DELETE query', error);
+            res.sendStatus(500);
+        });
+})
+
 module.exports = taskRouter;
