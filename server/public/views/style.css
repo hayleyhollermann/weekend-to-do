@@ -1,0 +1,7 @@
+*{
+    background-color: aliceblue;
+}
+
+[data-status="true"]{
+    font-style: italic;;
+}
