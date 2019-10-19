@@ -7,6 +7,7 @@ function onReady(){
     tasksToTable();
 }
 
+
 function loopTasks(array){
     console.log('in loop');
     $('#showTasks').empty();
@@ -14,10 +15,19 @@ function loopTasks(array){
         $('#showTasks').append(`
           <tr data-id="${taskToDo.id}">
           <td>${taskToDo.task}</td>
-          <td>${taskToDo.complete}</td>
+          <td>${checkIfComplete(taskToDo)}</td>
           <td><button class="delete">Delete</button></td>
         </tr>`
         )}
+}
+
+function checkIfComplete(object){
+    if (object.complete){
+        return `<input type="checkbox" id="notCompleteInput" checked>`; 
+    }
+    else {
+        return `<input type="checkbox" id="notCompleteInput">`;
+    }
 }
 
 // GET
@@ -60,3 +70,6 @@ function handleDelete(){
       tasksToTable();
     })
   }
+
+  // PUT 
+ 
