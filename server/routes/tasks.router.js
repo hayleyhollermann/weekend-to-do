@@ -33,9 +33,9 @@ taskRouter.post('/', (req, res) => {
 taskRouter.put('/:id', (req, res) => {
     console.log('in PUT');
     // updating default false value to true for complete in table
-    const query = `UPDATE "tasks" SET "complete" = true
-    WHERE "id" = $1;`;
-    pool.query(query, [req.params.id]).then(() => {
+    const updateQuery = `UPDATE "tasks" SET "complete" = $1
+    WHERE "id" = $2;`;
+    pool.query(updateQuery, [req.body.changeComplete, req.params.id]).then(() => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in Put query`, error);

@@ -15,7 +15,7 @@ function loopTasks(array){
     $('#showTasks').empty();
     for (taskToDo of array){
         $('#showTasks').append(`
-          <tr data-id="${taskToDo.id}">
+          <tr data-id="${taskToDo.id}" data-status="${taskToDo.complete}">
           <td>${taskToDo.task}</td>
           <td>${checkIfComplete(taskToDo)}</td>
           <td><button class="delete">Delete</button></td>
@@ -78,10 +78,16 @@ function handleDelete(){
     console.log('changing checkbox!');
 
     let id = $(this).closest('tr').data().id;
+    let currentStatus = $(this).closest('tr').data().status;
+    console.log(currentStatus);
+    
     console.log(id);
     $.ajax({
       method: 'PUT',
-      url: `/tasks/${id}`
+      url: `/tasks/${id}`,
+      data: {
+          changeComplete: !currentStatus
+      }
     }).then(function() {
       tasksToTable();
     })
