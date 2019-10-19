@@ -4,6 +4,8 @@ function onReady(){
     console.log('js and jq are ready');
     $('#submitButton').on('click', addNewTask);
     $('#showTasks').on('click', '.delete', handleDelete);
+    $('#showTasks').on('click', '.completeInput', handleCheckbox);
+    $('#showTasks').on('click', '.notCompleteInput', handleCheckbox);
     tasksToTable();
 }
 
@@ -23,10 +25,10 @@ function loopTasks(array){
 
 function checkIfComplete(object){
     if (object.complete){
-        return `<input type="checkbox" id="notCompleteInput" checked>`; 
+        return `<input type="checkbox" class="completeInput" checked>`; 
     }
     else {
-        return `<input type="checkbox" id="notCompleteInput">`;
+        return `<input type="checkbox" class="notCompleteInput">`;
     }
 }
 
@@ -72,4 +74,15 @@ function handleDelete(){
   }
 
   // PUT 
- 
+  function handleCheckbox(){
+    console.log('changing checkbox!');
+
+    let id = $(this).closest('tr').data().id;
+    console.log(id);
+    $.ajax({
+      method: 'PUT',
+      url: `/tasks/${id}`
+    }).then(function() {
+      tasksToTable();
+    })
+  }
