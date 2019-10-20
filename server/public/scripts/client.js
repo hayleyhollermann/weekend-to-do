@@ -17,8 +17,8 @@ function loopTasks(array){
         $('#showTasks').append(`
           <tr data-id="${taskToDo.id}" data-status="${taskToDo.complete}">
           <td>${taskToDo.task}</td>
-          <td>${checkIfComplete(taskToDo)}</td>
-          <td><button class="delete">Delete</button></td>
+          <td class="checkBoxColumn">${checkIfComplete(taskToDo)}</td>
+          <td class="deleteButtonColumn"><button class="delete">Delete</button></td>
         </tr>`
         )}
 }

@@ -12,15 +12,17 @@
 <body>
     <h1>To-Do</h1>
     <div id="inputFields">
+        <h3>Add a task:</h3>
         <input type="text" id="taskInput">
-        <button id="submitButton">Add a task!</button>
+        <button id="submitButton">Add!</button>
     </div>
+    <br><br>
     <div>
         <table>
             <thead>
                 <th>Task</th>
-                <th>Complete?</th>
-                <th>Delete</th>
+                <th class="checkBoxColumn">Complete?</th>
+                <th class="deleteButtonColumn">Delete</th>
             </thead>
             <tbody id="showTasks">
 
