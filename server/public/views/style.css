@@ -5,10 +5,12 @@
 [data-status="true"]{
     font-style: italic;
     color: dimgrey;
+    font-size: 15px;
 }
 
 [data-status="false"]{
     font-family: monospace;
+    font-size: 15px;
 }
 
 table {
