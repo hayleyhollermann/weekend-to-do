@@ -57,6 +57,7 @@ function addNewTask(){
         }
       }).then(function(){
         tasksToTable();
+        $('#taskInput').val('');
       })
 };
 
