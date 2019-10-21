@@ -80,11 +80,9 @@ function handleDelete(){
   // PUT 
   function handleCheckbox(){
     console.log('changing checkbox!');
-
     let id = $(this).closest('tr').data().id;
     let currentStatus = $(this).closest('tr').data().status;
     console.log(currentStatus);
-    
     console.log(id);
     $.ajax({
       method: 'PUT',
