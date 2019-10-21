@@ -1,8 +1,9 @@
 const express = require('express');
 const taskRouter = express.Router();
-
+// requires database from pool
 const pool = require ('../modules/pool.js');
 
+// GET
 taskRouter.get('/', (req, res) => {
     console.log('in GET');
     // selecting all columns from tasks table in database
@@ -16,6 +17,7 @@ taskRouter.get('/', (req, res) => {
     });
 });
 
+// POST
 taskRouter.post('/', (req, res) => {
     console.log('in POST');
     // adding new task to tasks table in database
@@ -30,12 +32,13 @@ taskRouter.post('/', (req, res) => {
     });
 })
 
+// PUT
 taskRouter.put('/:id', (req, res) => {
     console.log('in PUT');
     // updating default false value to true for complete in table
-    const updateQuery = `UPDATE "tasks" SET "complete" = $1
+    const query = `UPDATE "tasks" SET "complete" = $1
     WHERE "id" = $2;`;
-    pool.query(updateQuery, [req.body.changeComplete, req.params.id]).then(() => {
+    pool.query(query, [req.body.changeComplete, req.params.id]).then(() => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in Put query`, error);
@@ -43,8 +46,10 @@ taskRouter.put('/:id', (req, res) => {
     });
 })
 
+// DELETE
 taskRouter.delete('/:id', (req, res) => {
     console.log('in DELETE');
+    // deletes from database
     const query = `DELETE FROM "tasks"
     WHERE "id" = $1;`;
     pool.query(query, [req.params.id])
@@ -56,4 +61,5 @@ taskRouter.delete('/:id', (req, res) => {
         });
 })
 
+// exports
 module.exports = taskRouter;
