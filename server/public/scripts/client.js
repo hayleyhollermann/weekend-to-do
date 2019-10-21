@@ -2,6 +2,7 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('js and jq are ready');
+    // set up event listeners
     $('#submitButton').on('click', addNewTask);
     $('#showTasks').on('click', '.delete', handleDelete);
     $('#showTasks').on('click', '.completeInput', handleCheckbox);
@@ -14,6 +15,7 @@ function loopTasks(array){
     console.log('in loop');
     $('#showTasks').empty();
     for (taskToDo of array){
+        // appends tasks to table
         $('#showTasks').append(`
           <tr data-id="${taskToDo.id}" data-status="${taskToDo.complete}">
           <td>${taskToDo.task}</td>
@@ -24,6 +26,7 @@ function loopTasks(array){
 }
 
 function checkIfComplete(object){
+    // checks if complete to determine if box should be checked
     if (object.complete){
         return `<input type="checkbox" class="completeInput" checked>`; 
     }
