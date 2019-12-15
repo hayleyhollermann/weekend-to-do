@@ -16,6 +16,9 @@ The user interface includes an input field to add a task. Once added, the task w
 - Node Version 12.11.1
 - Postgres/Postico
 
+## Deployed
+To view the deployed app, visit:
+https://weekend-to-do-list-hayley.herokuapp.com/
 
 ## Acknowledgement
 Thanks to Prime Digital Academy in Minneapolis who equipped and helped me to make this application a reality.
